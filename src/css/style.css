@@ -1,0 +1,379 @@
+/* ---------- RESET ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+
+
+/* ---------- ELEMENTS ---------- */
+body {
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+button {
+    border: none;
+    font-family: inherit;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+dialog {
+    justify-self: center;
+    border: 1px solid var(--color-light-grey);
+    border-radius: 10px;
+
+    top: 100px;
+}
+
+dialog::backdrop {
+    background: rgb(106, 118, 119);
+    opacity: 60%;
+}
+
+input,
+textarea,
+select {
+    font-family: inherit;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background-color: var(--color-light-grey);
+    width: 250px;
+}
+
+input,
+select {
+    height: 25px;
+}
+
+textarea[id="task-description"] {
+    resize: none;
+}
+
+label {
+    color: var(--color-text);
+    margin: 15px 0 2px 0;
+}
+
+
+
+/* ---------- PREDEFINED BUILDING BLOCKS ---------- */
+.icon {                 /* for 'img' */
+    height: 20px;
+    position: relative;
+    top: 2px;
+    margin-right: 3px;
+}
+
+
+.btn-cancel {           /* for a 'button' element */
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.btn-add,
+.btn-confirm {          /* for a 'button' element */
+    font-weight: 600;
+    color: var(--color-standard-green)
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.hidden {
+    visibility: hidden;
+    max-height: 0;
+}
+
+.visible {
+    visibility: visible;
+    height: auto;
+}
+
+
+
+/* ---------- VARIABLES ---------- */
+:root {
+    --color-bg-sidebar: #F8F8F8;
+    --color-text-finished: #bbbaba;
+    --color-text: rgba(0, 0, 0, 0.669);
+    --color-standard-green: #00D483;
+    --color-light-grey: rgba(230, 229, 229, 0.576);
+    --color-highlight-description: #00d48315;
+}
+
+
+
+/* ---------- PROJECT ---------- */
+body {
+    display: grid;
+    grid-template-columns: minmax(160px, 2fr) 5fr;
+    grid-template-rows: 70px 70px auto 1fr;
+    column-gap: max(50px, 10%);
+    grid-template-areas:
+        "logo ."
+        "sidebar header"
+        "sidebar tasks-current"
+        "sidebar tasks-finished";
+
+    max-width: 900px;
+    margin: auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+
+/* ---- LOGO ---- */
+.Logo {
+    grid-area: logo;
+    padding-left: 40px;
+
+    display: grid;
+    align-items: center;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    background-color: var(--color-bg-sidebar);
+}
+
+
+/* ---- SIDEBAR ---- */
+.Sidebar {
+    grid-area: sidebar;
+    padding-left: 40px;
+
+    display: grid;
+    align-content: start;
+
+    background-color: var(--color-bg-sidebar);
+}
+
+.Sidebar__list {
+    margin-top: 40px;
+}
+
+.Sidebar__time,
+.Sidebar__list,
+.Sidebar__list-container {
+    display: grid;
+    justify-items: left;
+}
+
+.Sidebar__btn-add {
+    background-color: var(--color-bg-sidebar);
+    position: relative;
+    top: 5px;
+
+    & img {
+        height: 20px;
+    }
+}
+
+.Sidebar__title {
+    font-weight: 600;
+}
+
+.Sidebar__list-element {
+    white-space: nowrap;
+
+    & .Sidebar__btn-delete {
+        position: relative;
+        top: 2px;
+        height: 18px;
+        visibility: hidden;
+    }
+}
+
+.Sidebar__list-element:hover {
+
+    & .Sidebar__btn-edit,
+    & .Sidebar__btn-delete {
+        visibility: visible;
+    }
+}
+
+.Sidebar__btn {
+    background-color: var(--color-bg-sidebar);
+    color: var(--color-text);
+    white-space: nowrap;
+    font-size: 1rem;
+    padding: 6px 10px 6px 0px;
+}
+
+
+/* ---- HEADER ---- */
+.Header {
+    grid-area: header;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    place-content: start;
+}
+
+.Header__title {
+    font-size: 3rem;
+}
+
+.Header__btn-add {
+    background-color: white;
+    border: none;
+    margin-left: 5px;
+    position: relative;
+    top: 5px;
+    
+    & img {
+        height: 50px;
+    }
+}
+
+
+/* ---- CURRENT ---- */
+.Open {
+    grid-area: tasks-current;
+    align-self: baseline;
+}
+
+.Open__one-task {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 2;
+
+    & .Open__btn-unexpanded,
+    & .Open__btn-edit,
+    & .Open__btn-delete {
+        visibility: hidden;
+    }
+}
+
+.Open__container-task {
+    display: flex;
+}
+
+.Open__text {
+    white-space: nowrap;
+}
+
+.Open__text--line-through {
+    color: var(--color-text-finished);
+    text-decoration: line-through;
+}
+
+
+.Open__one-task:hover {
+    & .Open__btn-unexpanded,
+    & .Open__btn-edit,
+    & .Open__btn-delete {
+        visibility: visible;
+    }
+}
+
+.Open__container-details {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 0.8rem;
+    line-height: 1.2;
+    margin-left: 25px;
+    width: 350px;
+}
+
+.Open__details-title {
+    font-weight: 600;
+    padding: 3px;
+    align-self: flex-start;
+    background-color: var(--color-highlight-description);
+}
+
+.Open__details-text {
+    padding-bottom: 8px;
+    padding-left: 3px;
+    color: var(--color-text);
+}
+
+
+/* ---- FINISHED ---- */
+.Finished {
+    grid-area: tasks-finished;
+}
+
+.Finished__title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-text-finished);
+
+    margin-top: 30px;
+}
+
+.Finished__one-task {
+    display: flex;
+    line-height: 2;
+}
+
+.Finished__text--closed {
+    color: var(--color-text-finished);
+    text-decoration: line-through;
+}
+
+.Finished__text--open {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.Finished__btn-expanded {
+    
+    & .icon {
+        top: 6px;
+    }
+}
+
+
+/* ---- DIALOGS ---- */
+#New__form,
+#List__form,
+#Confirm-list__form {
+    display: grid;
+}
+
+.Dialog__title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.Dialog__confirm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px 0 10px 0;
+}
+
+.Dialog__text {
+    color: var(--color-text);
+    font-size: 0.8rem;
+    margin: 10px 0 5px 0;
+}
