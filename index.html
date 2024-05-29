@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneTodo</title>
+<script defer src="main.js"></script></head>
+
+<body>
+
+    <!-- LOGO -->
+    <div class="Logo">
+        <div>OneTodo</div>
+    </div>
+
+
+    <!-- SIDEBAR -->
+    <nav class="Sidebar">
+        <div class="Sidebar__time">
+            <div class="Sidebar__title">Time</div>
+            <button class="Sidebar__btn">↓ today</button>
+            <button class="Sidebar__btn">← past</button>
+            <button class="Sidebar__btn">→ future</button>
+            <button class="Sidebar__btn">— someday</button>
+        </div>
+
+        <div class="Sidebar__list">
+            <div class="Sidebar__title">Lists
+                <button class="Sidebar__btn-add">
+                    <img src="./icons/plus-circle.svg" alt="Add list">
+                </button>
+            </div>
+            <button class="Sidebar__btn Sidebar__list-default">Default</button>
+            <div class="Sidebar__list-container"></div>
+        </div>
+    </nav>
+
+
+    <!-- HEADER -->
+    <div class="Header">
+        <h1 class="Header__title">Today</h1>
+        <button class="Header__btn-add"><img src="./icons/plus-circle.svg"></button>
+    </div>
+
+
+    <!-- CURRENT -->
+    <ul class="Open"></ul>
+
+
+    <!-- FINISHED -->
+    <div class="Finished">
+        <div class="Finished__title">Finished tasks
+            <button class="Finished__btn-expanded">
+                <img class="icon unexpanded" src="./icons/chevron-up.svg">
+            </button>
+        </div>
+        <ul class="Finished__container"></ul>
+    </div>
+
+
+    <!-- DIALOG: NEW TASK -->
+    <dialog id="New">
+        <form method="dialog" id="New__form">
+
+            <label for="task-title" class="Dialog__title">New Task</label>
+            <input type="text" name="title" id="task-title" autofocus required>
+
+            <label for="task-description">Description</label>
+            <textarea name="description" id="task-description" maxlength="100" rows="4"></textarea>
+
+            <label for="task-duedate">Due date</label>
+            <input type="date" name="date" id="task-duedate">
+
+            <label for="task-list">List</label>
+            <select name="list" id="task-list">
+                <option value="Default">Default</option>
+                <option value="List 1">List 1</option>
+                <option value="List 2">List 2</option>
+            </select>
+
+            <label for="task-priority">Priority</label>
+            <select name="priority" id="task-priority">
+                <option value=""></option>
+                <option value="high">High</option>
+            </select>
+
+            <div class="Dialog__confirm">
+                <button type="button" class="btn-cancel" formnovalidate>CANCEL</button>
+                <button type="submit" class="btn-add">ADD</button>
+            </div>
+
+        </form>
+    </dialog>
+
+
+    <!-- DIALOG: ADD LIST -->
+    <dialog id="List">
+        <form method="dialog" id="List__form">
+            <label for="list-name" class="Dialog__title">New list</label>
+            <input type="text" name="list" id="list-name" autofocus required>
+            <div class="Dialog__confirm">
+                <button type="button" class="btn-cancel" formnovalidate>CANCEL</button>
+                <button type="submit" class="btn-add">ADD</button>
+            </div>
+        </form>
+    </dialog>
+
+</body>
+
+</html>
