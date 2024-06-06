@@ -14,11 +14,11 @@ The following tools were used:
 - JavaScript
 - Webpack
 
-![alt text](../todo-app/images/App_overview.png)
+![alt text](https://github.com/justausercoding/todo-app/blob/main/images/App_overview.png)
 
-![alt text](../todo-app/images/App_finished-tasks.png)
+![alt text](https://github.com/justausercoding/todo-app/blob/main/images/App_finished-tasks.png)
 
-![alt text](../todo-app/images/App_add-new-list.png)
+![alt text](https://github.com/justausercoding/todo-app/blob/main/images/App_add-new-task.png)
 
-![alt text](../todo-app/images/App_add-new-task.png)
+![alt text](https://github.com/justausercoding/todo-app/blob/main/images/App_add-new-list.png)
 
